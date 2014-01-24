@@ -201,7 +201,6 @@ sub parse_videos {
                        $meta->{video_url} ];
   }
 
-  debug ("Video bilgileri $path/videos.yaml dosyasina yaziliyor");
   open my $fh, '>', $path . '/videos.yaml' or die $^E;
   binmode $fh, ':utf8';
   print $fh Dump ($videos);
