@@ -10,7 +10,7 @@ teknofem-ripper.pl - L<http://teknofem.com/> video indirici
 
 teknofem-ripper.pl uygulamasini, hic bir argumen olmadan calistirarak
 tum siteyi ripleyebilirsiniz. Videolari varsayilan olarak bulundugunuz
-dizindeki 'videos' dizinine ceker.
+dizindeki 'videolar' dizinine ceker.
 
 B<UYARI>: Teknofem arsivi yuzlerce GB video barindirmaktadir. Tum arsivi
 cekmek yerine sadece belli kategorideki videolari indirmek isteyebilirsiniz.
@@ -44,7 +44,7 @@ dizinlerinden herhangi birine atabilirsiniz.
 
 =item B<./teknofem-ripper.pl>
 
-Tum videolari 'videos' dizinine indirir.
+Tum videolari 'videolar' dizinine indirir.
 
 =item B<./teknofem-ripper.pl -P> I<dersler>
 
@@ -55,9 +55,9 @@ Tum videolari belirttiginiz I<dersler> dizinine indirir.
 Sadece dizin duzenini olusturur, hic bir video indirmez. Olusturdugunuz
 duzen ile istediginiz bir kategorideki videolari indirebilirsiniz.
 
-=item B<./teknofem-ripper.pl -d> I<videos/matematik/temel-kavramlar>
+=item B<./teknofem-ripper.pl -d> I<videolar/matematik/temel-kavramlar>
 
-Sadece I<videos/matematik/temel-kavramlar> kategorisine ait videolari indirir.
+Sadece I<videolar/matematik/temel-kavramlar> kategorisine ait videolari indirir.
 Bu dizin daha once bu uygulama tarafindan dizin duzenegi olusturulduktan
 sonra kullanilmalidir.
 
@@ -134,7 +134,7 @@ use YAML qw/LoadFile Dump/;
 
 our $VERSION = '0.01';
 my $OPTIONS = {
-  PREFIX   => 'videos',
+  PREFIX   => 'videolar',
   DEBUG    => 1,
   CWD      => getcwd (),
   RTMPDUMP => ''
