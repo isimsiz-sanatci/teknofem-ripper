@@ -8,7 +8,7 @@ teknofem-ripper.pl - L<http://teknofem.com/> video indirici
 
 =head1 OZET
 
-teknofem-ripper.pl uygulamasini, hic bir argumen olmadan calistirarak
+teknofem-ripper.pl uygulamasini, hic bir arguman olmadan calistirarak
 tum siteyi ripleyebilirsiniz. Videolari varsayilan olarak bulundugunuz
 dizindeki 'videolar' dizinine ceker.
 
@@ -63,9 +63,9 @@ sonra kullanilmalidir.
 
 =back
 
-=head1 ARGUMENLER
+=head1 ARGUMANLER
 
-Uygulama herhangi bir komut satiri argumeni girilmeden calistirildiginda,
+Uygulama herhangi bir komut satiri argumani girilmeden calistirildiginda,
 once kategorileri alir ve video dizinlerini/linklerini olusturur. Ardindan
 bu dizinleri kullanarak tum videolari ceker.
 
@@ -353,7 +353,7 @@ sub main {
 
   make_ua ();
 
-  # hic argumen girilmediyse
+  # hic arguman girilmediyse
   if (!$actions->{get_categories_and_links} &&
       !$actions->{download_all_videos} &&
       !$actions->{download_video} &&
