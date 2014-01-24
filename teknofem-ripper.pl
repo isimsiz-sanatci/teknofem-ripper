@@ -303,8 +303,7 @@ sub download_video {
             'flowplayer.commercial-3.2.16.swf'
   );
 
-  print "$_ " for @args;
-  print "\n";
+  system (@args);
 
 }
 
