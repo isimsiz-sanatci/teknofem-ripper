@@ -1,0 +1,94 @@
+ISIM
+    teknofem-ripper.pl - <http://teknofem.com/> video indirici
+
+OZET
+    teknofem-ripper.pl uygulamasini, hic bir argumen olmadan calistirarak
+    tum siteyi ripleyebilirsiniz. Videolari varsayilan olarak bulundugunuz
+    dizindeki 'videos' dizinine ceker.
+
+    UYARI: Teknofem arsivi yuzlerce GB video barindirmaktadir. Tum arsivi
+    cekmek yerine sadece belli kategorideki videolari indirmek
+    isteyebilirsiniz. Bunun icin yazinin devamindaki *ORNEKLER* bolumunu
+    okuyunuz.
+
+ACIKLAMA
+    Bu uygulamayi perl kurulu herhangi bir sistemde calistirabiliriniz.
+    Windows icin perl'u <http://strawberryperl.com/> adresinden
+    edinebilirsiniz. Strawberry perl, bu uygulamanin calismasi icin gereken
+    tum paketleri icerir. Strawberry perl kurduktan sonra, sadece
+    *teknofem-ripper*'e cift tiklayarak tum videolari indirmeye
+    baslayabilirsiniz.
+
+    Eger linux ve benzeri isletim sistemi kullaniyorsaniz; libwww, JSON ve
+    YAML modullerine ihtiyaciniz var. Debian ve turevi dagitimlarda "apt-get
+    install libwww-perl libjson-perl libyaml-perl" komutuyla gerekli tum
+    paketleri kurabilirsiniz. Diger isletim sistemleri icin, isletim
+    sisteminizin belgelerine bakarak ilgili paket isimlerini bulabilirsiniz.
+
+    Bu uygulama ayrica *rtmpdump* kullanarak videolari kaydetmektedir. Linux
+    isletim sistemi icin paket yoneticisinizden "rtmpdump" paketini
+    kurabilirsiniz. Windows isletim sistemi icin, *rtmpdump*'un ana
+    sayfasindan <http://rtmpdump.mplayerhq.hu/> windows icin insa edilmis
+    surumu indirip, bu uygulamanin calistigi dizine veya isletim
+    sisteminizin varsayilan *PATH* dizinlerinden herhangi birine
+    atabilirsiniz.
+
+ORNEKLER
+    ./teknofem-ripper.pl
+           Tum videolari 'videos' dizinine indirir.
+
+    ./teknofem-ripper.pl -P *dersler*
+           Tum videolari belirttiginiz *dersler* dizinine indirir.
+
+    ./teknofem-ripper.pl -G
+           Sadece dizin duzenini olusturur, hic bir video indirmez.
+           Olusturdugunuz duzen ile istediginiz bir kategorideki videolari
+           indirebilirsiniz.
+
+    ./teknofem-ripper.pl -d *videos/matematik/temel-kavramlar*
+           Sadece *videos/matematik/temel-kavramlar* kategorisine ait
+           videolari indirir. Bu dizin daha once bu uygulama tarafindan
+           dizin duzenegi olusturulduktan sonra kullanilmalidir.
+
+ARGUMENLER
+    Uygulama herhangi bir komut satiri argumeni girilmeden
+    calistirildiginda, once kategorileri alir ve video
+    dizinlerini/linklerini olusturur. Ardindan bu dizinleri kullanarak tum
+    videolari ceker.
+
+    Komut satiri parametrelerinin bir listesi asagida verilmistir:
+
+    -P, --prefix[=*dizin*]
+           Kategori yapisi icin kullanilacak *dizin*. Eger bu paramatre
+           girilmezse varsayilan dizin olarak uygulamanin calistigi dizin
+           icersinde 'videos' kullanilir.
+
+    -G, --generate-layout
+           Kategorileri cekerek video dizinlerini ve video linklerini
+           olusturur.
+
+    -S, --download-all-videos
+           Daha once olusturulmus indirme dizinlerini kullanarak tum
+           videolari indirir.
+
+    -d, --download[=*dizin*]
+           *dizin* icersindeki video linklerini kullanarak, sadece o dizin
+           icerisindeki videolari indirir.
+
+    -r, --rtmpdump[=*yol*]
+           rtmpdump uygulamasinin yolu. Eger uygulama isletim sisteminizin
+           varsayilan uygulama calistirma dizinlerinden birindeyse (*PATH*),
+           rtmpdump yolunu belirlemenize gerek yoktur.
+
+    -v, --verbose
+           Uygulama calisirken ayrintili ciktilari gosterir.
+
+    -h, --help
+           Uygulamanin kullanimi hakkinda genel bilgi.
+
+COPYRIGHT
+    Copyright 2014, Ismini Aciklamak Istemeyen Bir Seyirci
+
+    Bu uygulama, Perl'in kendi lisansi altinda degistirip/tekrar
+    dagitabildiginiz ozgur bir yazilimdir.
+
