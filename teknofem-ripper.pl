@@ -295,6 +295,7 @@ sub download_video {
 
   my @args = (
     find_rtmpdump (),
+    '-e',
     '-r' => $link,
     '-y' => make_playpath ($link),
     '-o' => $filename,
@@ -302,7 +303,21 @@ sub download_video {
             'flowplayer.commercial-3.2.16.swf'
   );
 
-  system (@args);
+  my $error_count = 0;
+
+  do {
+    system (@args);
+
+    if ($?) {
+      if (++$error_count < 10) {
+        warn "$filename indirilirken hata olustu tekrar deneniyor\n"
+      } else {
+        warn "$filename indirilirken cok fazla hata olustu, " .
+             "hata ciktisini inceleyin\n";
+        exit 155;
+      }
+    }
+  } while ($?);
 
 }
 
