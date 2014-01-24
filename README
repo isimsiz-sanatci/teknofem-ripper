@@ -4,7 +4,7 @@ ISIM
 OZET
     teknofem-ripper.pl uygulamasini, hic bir argumen olmadan calistirarak
     tum siteyi ripleyebilirsiniz. Videolari varsayilan olarak bulundugunuz
-    dizindeki 'videos' dizinine ceker.
+    dizindeki 'videolar' dizinine ceker.
 
     UYARI: Teknofem arsivi yuzlerce GB video barindirmaktadir. Tum arsivi
     cekmek yerine sadece belli kategorideki videolari indirmek
@@ -35,7 +35,7 @@ ACIKLAMA
 
 ORNEKLER
     ./teknofem-ripper.pl
-           Tum videolari 'videos' dizinine indirir.
+           Tum videolari 'videolar' dizinine indirir.
 
     ./teknofem-ripper.pl -P *dersler*
            Tum videolari belirttiginiz *dersler* dizinine indirir.
@@ -45,8 +45,8 @@ ORNEKLER
            Olusturdugunuz duzen ile istediginiz bir kategorideki videolari
            indirebilirsiniz.
 
-    ./teknofem-ripper.pl -d *videos/matematik/temel-kavramlar*
-           Sadece *videos/matematik/temel-kavramlar* kategorisine ait
+    ./teknofem-ripper.pl -d *videolar/matematik/temel-kavramlar*
+           Sadece *videolar/matematik/temel-kavramlar* kategorisine ait
            videolari indirir. Bu dizin daha once bu uygulama tarafindan
            dizin duzenegi olusturulduktan sonra kullanilmalidir.
 
