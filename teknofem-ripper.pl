@@ -296,6 +296,7 @@ sub download_video {
   my @args = (
     find_rtmpdump (),
     '-e',
+    '-q',
     '-r' => $link,
     '-y' => make_playpath ($link),
     '-o' => $filename,
