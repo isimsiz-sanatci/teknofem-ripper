@@ -92,6 +92,11 @@ Daha once olusturulmus indirme dizinlerini kullanarak tum videolari indirir.
 I<dizin> icersindeki video linklerini kullanarak, sadece o dizin icerisindeki
 videolari indirir.
 
+=item B<--retry>[=I<sayi>]
+
+Video indirilirken hata olusursa kac kere bastan denenecegini belirtir.
+Varsayilan deger 3 dur.
+
 =item B<-r, --rtmpdump>[=I<yol>]
 
 rtmpdump uygulamasinin yolu. Eger uygulama isletim sisteminizin varsayilan
@@ -142,6 +147,7 @@ my $OPTIONS = {
   DEBUG    => 0,
   CWD      => getcwd (),
   RTMPDUMP => '',
+  RETRY    => 3,
   DO_NOT_DOWNLOAD => ''
 };
 
@@ -325,7 +331,7 @@ sub download_video {
 
     if ($?) {
       unlink ($filename);
-      if (++$error_count < 10) {
+      if (++$error_count < $OPTIONS->{RETRY}) {
         warn "$filename indirilirken hata olustu 3 saniye sonra " .
              "tekrar deneniyor\n";
         sleep 3;
@@ -369,6 +375,7 @@ sub main {
     'verbose|v+'  => \$OPTIONS->{DEBUG},
     'rtmpdump|r' => \$OPTIONS->{RTMPDUMP},
     'do-not-download' => \$OPTIONS->{DO_NOT_DOWNLOAD},
+    'retry=i'      => \$OPTIONS->{RETRY},
 
     # islemler
     'generate-layout|G'     => \$actions->{get_categories_and_links},
