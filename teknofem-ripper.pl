@@ -311,7 +311,9 @@ sub download_video {
 
     if ($?) {
       if (++$error_count < 10) {
-        warn "$filename indirilirken hata olustu tekrar deneniyor\n"
+        warn "$filename indirilirken hata olustu 3 saniye sonra " .
+             "tekrar deneniyor\n";
+        sleep 3;
       } else {
         warn "$filename indirilirken cok fazla hata olustu, " .
              "hata ciktisini inceleyin\n";
