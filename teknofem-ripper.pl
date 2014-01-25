@@ -135,7 +135,7 @@ use YAML qw/LoadFile Dump/;
 our $VERSION = '0.01';
 my $OPTIONS = {
   PREFIX   => 'videolar',
-  DEBUG    => 1,
+  DEBUG    => 0,
   CWD      => getcwd (),
   RTMPDUMP => '',
   DO_NOT_DOWNLOAD => ''
@@ -160,7 +160,8 @@ my $ua;
 
 
 sub debug {
-  return if defined $_[1] && $OPTIONS->{DEBUG} != $_[1];
+  my $debug_level = $_[1] || 1;
+  return if $debug_level > $OPTIONS->{DEBUG};
   print $_[0], "\n";
 }
 
@@ -293,7 +294,7 @@ sub make_playpath {
 sub download_video {
   my ($title, $filename, $link) = @_;
 
-  print "$filename indiriliyor\n";
+  debug ("$filename indiriliyor");
 
   my @args = (
     find_rtmpdump (),
@@ -360,8 +361,7 @@ sub main {
 
     # genel secenekler
     'prefix|P=s' => \$OPTIONS->{PREFIX},
-    'verbose|v'  => \$OPTIONS->{DEBUG},
-    'verbose-level|V=i'=> \$OPTIONS->{DEBUG},
+    'verbose|v+'  => \$OPTIONS->{DEBUG},
     'rtmpdump|r' => \$OPTIONS->{RTMPDUMP},
     'do-not-download' => \$OPTIONS->{DO_NOT_DOWNLOAD},
 
