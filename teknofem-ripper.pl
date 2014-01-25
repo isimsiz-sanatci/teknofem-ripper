@@ -97,7 +97,7 @@ videolari indirir.
 Video indirilirken hata olusursa kac kere bastan denenecegini belirtir.
 Varsayilan deger 3 dur.
 
-=item B<-r, --rtmpdump>[=I<yol>]
+=item B<--rtmpdump>[=I<yol>]
 
 rtmpdump uygulamasinin yolu. Eger uygulama isletim sisteminizin varsayilan
 uygulama calistirma dizinlerinden birindeyse (I<PATH>), rtmpdump yolunu
@@ -373,7 +373,7 @@ sub main {
     # genel secenekler
     'prefix|P=s' => \$OPTIONS->{PREFIX},
     'verbose|v+'  => \$OPTIONS->{DEBUG},
-    'rtmpdump|r' => \$OPTIONS->{RTMPDUMP},
+    'rtmpdump=s' => \$OPTIONS->{RTMPDUMP},
     'do-not-download' => \$OPTIONS->{DO_NOT_DOWNLOAD},
     'retry=i'      => \$OPTIONS->{RETRY},
 
