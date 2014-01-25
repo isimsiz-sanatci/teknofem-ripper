@@ -98,6 +98,10 @@ rtmpdump uygulamasinin yolu. Eger uygulama isletim sisteminizin varsayilan
 uygulama calistirma dizinlerinden birindeyse (I<PATH>), rtmpdump yolunu
 belirlemenize gerek yoktur.
 
+=item B<--do-not-download>
+
+Videoyu indirmez, rtmpdump komutunu goruntulemek ve debug icin kullanilir.
+
 =item B<-v, --verbose>
 
 Uygulama calisirken ayrintili ciktilari gosterir.
