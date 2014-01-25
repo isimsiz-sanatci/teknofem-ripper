@@ -297,13 +297,14 @@ sub download_video {
   my @args = (
     find_rtmpdump (),
     '-e',
-    '-q',
     '-r' => $link,
     '-y' => make_playpath ($link),
     '-o' => $filename,
     '-W' => 'http://www.teknofem.com/assets/js/flowplayer/' .
             'flowplayer.commercial-3.2.16.swf'
   );
+
+  push @args, '-q' if $OPTIONS->{DEBUG} < 2;
 
   my $error_count = 0;
 
