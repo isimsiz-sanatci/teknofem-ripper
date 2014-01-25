@@ -371,11 +371,11 @@ sub main {
   GetOptions (
 
     # genel secenekler
-    'prefix|P=s' => \$OPTIONS->{PREFIX},
-    'verbose|v+'  => \$OPTIONS->{DEBUG},
-    'rtmpdump=s' => \$OPTIONS->{RTMPDUMP},
-    'do-not-download' => \$OPTIONS->{DO_NOT_DOWNLOAD},
-    'retry=i'      => \$OPTIONS->{RETRY},
+    'prefix|P=s'            => \$OPTIONS->{PREFIX},
+    'verbose|v+'            => \$OPTIONS->{DEBUG},
+    'rtmpdump=s'            => \$OPTIONS->{RTMPDUMP},
+    'do-not-download'       => \$OPTIONS->{DO_NOT_DOWNLOAD},
+    'retry=i'               => \$OPTIONS->{RETRY},
 
     # islemler
     'generate-layout|G'     => \$actions->{get_categories_and_links},
