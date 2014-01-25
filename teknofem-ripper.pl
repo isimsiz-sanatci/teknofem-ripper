@@ -159,7 +159,8 @@ my $ua;
 
 
 sub debug {
-  print $_[0], "\n" if $OPTIONS->{DEBUG} || defined $_[1];
+  return if defined $_[1] && $OPTIONS->{DEBUG} != $_[1];
+  print $_[0], "\n";
 }
 
 sub generate_filename {
@@ -291,7 +292,7 @@ sub make_playpath {
 sub download_video {
   my ($title, $filename, $link) = @_;
 
-  debug ("$filename indiriliyor", 1);
+  print "$filename indiriliyor\n";
 
   my @args = (
     find_rtmpdump (),
@@ -307,6 +308,10 @@ sub download_video {
   my $error_count = 0;
 
   do {
+    my $debug_out = 'Calistirilan komut:';
+    $debug_out .= " $_" for @args;
+    debug ($debug_out, 2);
+
     system (@args);
 
     if ($?) {
@@ -352,6 +357,7 @@ sub main {
     # genel secenekler
     'prefix|P=s' => \$OPTIONS->{PREFIX},
     'verbose|v'  => \$OPTIONS->{DEBUG},
+    'verbose-level|V=i'=> \$OPTIONS->{DEBUG},
     'rtmpdump|r' => \$OPTIONS->{RTMPDUMP},
 
     # islemler
