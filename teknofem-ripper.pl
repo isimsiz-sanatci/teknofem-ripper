@@ -137,7 +137,8 @@ my $OPTIONS = {
   PREFIX   => 'videolar',
   DEBUG    => 1,
   CWD      => getcwd (),
-  RTMPDUMP => ''
+  RTMPDUMP => '',
+  DO_NOT_DOWNLOAD => ''
 };
 
 my $ua;
@@ -313,6 +314,8 @@ sub download_video {
     $debug_out .= " $_" for @args;
     debug ($debug_out, 2);
 
+    return if ($OPTIONS->{DO_NOT_DOWNLOAD});
+
     system (@args);
 
     if ($?) {
@@ -360,6 +363,7 @@ sub main {
     'verbose|v'  => \$OPTIONS->{DEBUG},
     'verbose-level|V=i'=> \$OPTIONS->{DEBUG},
     'rtmpdump|r' => \$OPTIONS->{RTMPDUMP},
+    'do-not-download' => \$OPTIONS->{DO_NOT_DOWNLOAD},
 
     # islemler
     'generate-layout|G'     => \$actions->{get_categories_and_links},
