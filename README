@@ -2,7 +2,7 @@ ISIM
     teknofem-ripper.pl - <http://teknofem.com/> video indirici
 
 OZET
-    teknofem-ripper.pl uygulamasini, hic bir argumen olmadan calistirarak
+    teknofem-ripper.pl uygulamasini, hic bir arguman olmadan calistirarak
     tum siteyi ripleyebilirsiniz. Videolari varsayilan olarak bulundugunuz
     dizindeki 'videolar' dizinine ceker.
 
@@ -50,8 +50,8 @@ ORNEKLER
            videolari indirir. Bu dizin daha once bu uygulama tarafindan
            dizin duzenegi olusturulduktan sonra kullanilmalidir.
 
-ARGUMENLER
-    Uygulama herhangi bir komut satiri argumeni girilmeden
+ARGUMANLER
+    Uygulama herhangi bir komut satiri argumani girilmeden
     calistirildiginda, once kategorileri alir ve video
     dizinlerini/linklerini olusturur. Ardindan bu dizinleri kullanarak tum
     videolari ceker.
@@ -75,10 +75,18 @@ ARGUMENLER
            *dizin* icersindeki video linklerini kullanarak, sadece o dizin
            icerisindeki videolari indirir.
 
-    -r, --rtmpdump[=*yol*]
+    --retry[=*sayi*]
+           Video indirilirken hata olusursa kac kere bastan denenecegini
+           belirtir. Varsayilan deger 3 dur.
+
+    --rtmpdump[=*yol*]
            rtmpdump uygulamasinin yolu. Eger uygulama isletim sisteminizin
            varsayilan uygulama calistirma dizinlerinden birindeyse (*PATH*),
            rtmpdump yolunu belirlemenize gerek yoktur.
+
+    --do-not-download
+           Videoyu indirmez, rtmpdump komutunu goruntulemek ve debug icin
+           kullanilir.
 
     -v, --verbose
            Uygulama calisirken ayrintili ciktilari gosterir.
