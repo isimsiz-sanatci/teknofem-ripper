@@ -298,7 +298,7 @@ sub download_video {
 
   my @args = (
     find_rtmpdump (),
-    '-e',
+    '-v',
     '-r' => $link,
     '-y' => make_playpath ($link),
     '-o' => $filename,
@@ -320,6 +320,7 @@ sub download_video {
     system (@args);
 
     if ($?) {
+      unlink ($filename);
       if (++$error_count < 10) {
         warn "$filename indirilirken hata olustu 3 saniye sonra " .
              "tekrar deneniyor\n";
