@@ -304,6 +304,11 @@ sub make_playpath {
 sub download_video {
   my ($title, $filename, $link) = @_;
 
+  if (-e $filename) {
+    debug ("$filename daha once indirilmis, atlaniyor");
+    return;
+  }
+
   debug ("$filename indiriliyor");
 
   my @args = (
