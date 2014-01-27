@@ -45,7 +45,7 @@ ORNEKLER
            Olusturdugunuz duzen ile istediginiz bir kategorideki videolari
            indirebilirsiniz.
 
-    ./teknofem-ripper.pl -d *videolar/matematik/temel-kavramlar*
+    ./teknofem-ripper.pl -d videolar/matematik/temel-kavramlar
            Sadece *videolar/matematik/temel-kavramlar* kategorisine ait
            videolari indirir. Bu dizin daha once bu uygulama tarafindan
            dizin duzenegi olusturulduktan sonra kullanilmalidir.

@@ -55,7 +55,7 @@ Tum videolari belirttiginiz I<dersler> dizinine indirir.
 Sadece dizin duzenini olusturur, hic bir video indirmez. Olusturdugunuz
 duzen ile istediginiz bir kategorideki videolari indirebilirsiniz.
 
-=item B<./teknofem-ripper.pl -d> I<videolar/matematik/temel-kavramlar>
+=item B<./teknofem-ripper.pl -d> videolar/matematik/temel-kavramlar
 
 Sadece I<videolar/matematik/temel-kavramlar> kategorisine ait videolari indirir.
 Bu dizin daha once bu uygulama tarafindan dizin duzenegi olusturulduktan
