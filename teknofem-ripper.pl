@@ -12,7 +12,7 @@ teknofem-ripper.pl uygulamasini, hic bir arguman olmadan calistirarak
 tum siteyi ripleyebilirsiniz. Videolari varsayilan olarak bulundugunuz
 dizindeki 'videolar' dizinine ceker.
 
-B<UYARI>: Teknofem arsivi yuzlerce GB video barindirmaktadir. Tum arsivi
+B<UYARI>: Teknofem arsivi onlarca GB video barindirmaktadir. Tum arsivi
 cekmek yerine sadece belli kategorideki videolari indirmek isteyebilirsiniz.
 Bunun icin yazinin devamindaki I<ORNEKLER> bolumunu okuyunuz.
 
