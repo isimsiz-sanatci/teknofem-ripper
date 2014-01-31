@@ -95,7 +95,7 @@ videolari indirir.
 =item B<--retry>[=I<sayi>]
 
 Video indirilirken hata olusursa kac kere bastan denenecegini belirtir.
-Varsayilan deger 3 dur.
+Varsayilan deger 10 dur.
 
 =item B<--rtmpdump>[=I<yol>]
 
@@ -152,7 +152,7 @@ my $OPTIONS = {
   DEBUG    => 0,
   CWD      => getcwd (),
   RTMPDUMP => '',
-  RETRY    => 3,
+  RETRY    => 10,
   DO_NOT_DOWNLOAD => ''
 };
 
