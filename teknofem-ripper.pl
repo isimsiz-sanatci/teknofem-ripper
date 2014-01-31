@@ -311,13 +311,21 @@ sub find_rtmpdump {
   return $OPTIONS->{RTMPDUMP} if $OPTIONS->{RTMPDUMP};
 
   if ($^O eq 'MSWin32') {
+    system ('rtmpdump -h 2> NUL');
+    if ($?) {
+      warn "rtmpdump bulunamadi. README icerisinde yer alan yonergeleri " .
+           "izleyin.\n";
+      system ("PAUSE");
+      exit 1;
+    }
 
   } else {
     system ('rtmpdump -h > /dev/null 2>&1');
     die "rtmpdump bulunamadi. Paket yöneticiniz ile " .
         "rtmpdump paketini kurunuz\n" if $?;
-    return 'rtmpdump';
   }
+
+  return 'rtmpdump';
 }
 
 
