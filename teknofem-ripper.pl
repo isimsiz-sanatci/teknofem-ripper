@@ -107,6 +107,11 @@ belirlemenize gerek yoktur.
 
 Videoyu indirmez, rtmpdump komutunu goruntulemek ve debug icin kullanilir.
 
+=item B<--combine-videos>
+
+videos.yaml dosyalarini birlestirerek, tum video linklerinin yer aldigi
+all_videos.yaml dosyasi olusturur.
+
 =item B<-v, --verbose>
 
 Uygulama calisirken ayrintili ciktilari gosterir.
@@ -363,6 +368,38 @@ sub download_all_videos {
 }
 
 
+sub combine_videos {
+  my $path = shift || $OPTIONS->{PREFIX};
+  my @yamls;
+  my $wanted = sub {
+    return if $_ ne 'videos.yaml';
+    push @yamls, $File::Find::name;
+  };
+  find ($wanted, $path);
+
+  unless (scalar @yamls) {
+    debug ("No videos found in $path\n");
+    return unless scalar @yamls;
+  }
+  @yamls = sort @yamls;
+
+  my @videos;
+
+  for (@yamls) {
+    my @current_videos = @{LoadFile ($_)};
+    $_ =~ s/^$path\///;
+    $_ =~ s/.videos\.yaml$//;
+    push @videos, { cat => $_,
+                    videos => [ @current_videos ] };
+  }
+
+  open my $fh, ">all_videos.yaml";
+  binmode $fh, ":utf8";
+  print $fh Dump (@videos);
+  close $fh;
+}
+
+
 sub main {
   binmode STDOUT, ':utf8';
 
@@ -370,7 +407,8 @@ sub main {
     get_categories_and_links => '',
     download_all_videos      => '',
     download_video           => '',
-    help                     => ''
+    help                     => '',
+    combine_videos           => ''
   };
 
   GetOptions (
@@ -386,7 +424,8 @@ sub main {
     'generate-layout|G'     => \$actions->{get_categories_and_links},
     'download-all-videos|S' => \$actions->{download_all_videos},
     'download|d=s'          => \$actions->{download_video},
-    'help|h'                => \$actions->{help}
+    'help|h'                => \$actions->{help},
+    'combine-videos'        => \$actions->{combine_videos}
 
   );
 
@@ -403,7 +442,8 @@ sub main {
   if (!$actions->{get_categories_and_links} &&
       !$actions->{download_all_videos} &&
       !$actions->{download_video} &&
-      !$actions->{help})
+      !$actions->{help} &&
+      !$actions->{combine_videos})
   {
     get_categories_and_links ();
     download_all_videos ();
@@ -413,6 +453,8 @@ sub main {
     download_all_videos ();
   } elsif ($actions->{download_video}) {
     download_all_videos ($actions->{download_video});
+  } elsif ($actions->{combine_videos}) {
+    combine_videos ();
   }
 
 }
