@@ -6,7 +6,7 @@ OZET
     tum siteyi ripleyebilirsiniz. Videolari varsayilan olarak bulundugunuz
     dizindeki 'videolar' dizinine ceker.
 
-    UYARI: Teknofem arsivi yuzlerce GB video barindirmaktadir. Tum arsivi
+    UYARI: Teknofem arsivi onlarca GB video barindirmaktadir. Tum arsivi
     cekmek yerine sadece belli kategorideki videolari indirmek
     isteyebilirsiniz. Bunun icin yazinin devamindaki *ORNEKLER* bolumunu
     okuyunuz.
@@ -32,6 +32,15 @@ ACIKLAMA
     surumu indirip, bu uygulamanin calistigi dizine veya isletim
     sisteminizin varsayilan *PATH* dizinlerinden herhangi birine
     atabilirsiniz.
+
+  WINDOWS ICIN ADIM ADIM KULLANIMI
+    1  <http://strawberryperl.com/> adresinden Perl'i indirin ve kurun.
+
+    2  <http://rtmpdump.mplayerhq.hu/> adresinden *rtmpdump*'un windows
+       surumunu indirin ve zip icerisinden cikan rtmpdump.exe'in bot ile
+       ayni dizinde oldugundan emin olun.
+
+    3  Bota cift tiklayarak calistirdiginizda tum videolari cekecektir.
 
 ORNEKLER
     ./teknofem-ripper.pl
@@ -77,7 +86,7 @@ ARGUMANLER
 
     --retry[=*sayi*]
            Video indirilirken hata olusursa kac kere bastan denenecegini
-           belirtir. Varsayilan deger 3 dur.
+           belirtir. Varsayilan deger 10 dur.
 
     --rtmpdump[=*yol*]
            rtmpdump uygulamasinin yolu. Eger uygulama isletim sisteminizin
@@ -87,6 +96,10 @@ ARGUMANLER
     --do-not-download
            Videoyu indirmez, rtmpdump komutunu goruntulemek ve debug icin
            kullanilir.
+
+    --combine-videos
+           videos.yaml dosyalarini birlestirerek, tum video linklerinin yer
+           aldigi all_videos.yaml dosyasi olusturur.
 
     -v, --verbose
            Uygulama calisirken ayrintili ciktilari gosterir.
