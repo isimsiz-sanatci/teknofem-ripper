@@ -341,7 +341,8 @@ sub find_rtmpdump {
       die unless $zip->read ($tmpdir . '/rtmpdump-2.4-git-010913-windows.zip')
         == 0; 
       $zip->extractTree ('rtmpdump.exe', $OPTIONS->{CWD} . '/rtmpdump.exe');
-      $OPTIONS->{RTMPDUMP} = 'rtmpdump';
+      $OPTIONS->{RTMPDUMP} = `where rtmpdump`;
+      chomp ($OPTIONS->{RTMPDUMP});
     }
   } else {
     system ($OPTIONS->{RTMPDUMP} . ' -h > /dev/null 2>&1');
