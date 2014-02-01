@@ -33,10 +33,8 @@ bulabilirsiniz.
 
 Bu uygulama ayrica I<rtmpdump> kullanarak videolari kaydetmektedir. Linux
 isletim sistemi icin paket yoneticisinizden C<rtmpdump> paketini
-kurabilirsiniz. Windows isletim sistemi icin, I<rtmpdump>'un ana sayfasindan
-L<http://rtmpdump.mplayerhq.hu/> windows icin insa edilmis surumu indirip,
-bu uygulamanin calistigi dizine veya isletim sisteminizin varsayilan I<PATH>
-dizinlerinden herhangi birine atabilirsiniz.
+kurabilirsiniz. Windows isletim sistemi icin, I<rtmpdump> otomatik olarak
+uygulamanin calistigi dizine indirilecektir.
 
 =head2 WINDOWS ICIN ADIM ADIM KULLANIMI
 
@@ -48,13 +46,8 @@ L<http://strawberryperl.com/> adresinden Perl'i indirin ve kurun.
 
 =item 2
 
-L<http://rtmpdump.mplayerhq.hu/> adresinden I<rtmpdump>'un windows surumunu
-indirin ve zip icerisinden cikan rtmpdump.exe'in bot ile ayni dizinde
-oldugundan emin olun.
-
-=item 3
-
-Bota cift tiklayarak calistirdiginizda tum videolari cekecektir.
+teknofem-ripper.pl'a cift tiklayarak calistirdiginizda tum videolari
+cekecektir.
 
 =back
 

@@ -27,20 +27,14 @@ ACIKLAMA
 
     Bu uygulama ayrica *rtmpdump* kullanarak videolari kaydetmektedir. Linux
     isletim sistemi icin paket yoneticisinizden "rtmpdump" paketini
-    kurabilirsiniz. Windows isletim sistemi icin, *rtmpdump*'un ana
-    sayfasindan <http://rtmpdump.mplayerhq.hu/> windows icin insa edilmis
-    surumu indirip, bu uygulamanin calistigi dizine veya isletim
-    sisteminizin varsayilan *PATH* dizinlerinden herhangi birine
-    atabilirsiniz.
+    kurabilirsiniz. Windows isletim sistemi icin, *rtmpdump* otomatik olarak
+    uygulamanin calistigi dizine indirilecektir.
 
   WINDOWS ICIN ADIM ADIM KULLANIMI
     1  <http://strawberryperl.com/> adresinden Perl'i indirin ve kurun.
 
-    2  <http://rtmpdump.mplayerhq.hu/> adresinden *rtmpdump*'un windows
-       surumunu indirin ve zip icerisinden cikan rtmpdump.exe'in bot ile
-       ayni dizinde oldugundan emin olun.
-
-    3  Bota cift tiklayarak calistirdiginizda tum videolari cekecektir.
+    2  teknofem-ripper.pl'a cift tiklayarak calistirdiginizda tum videolari
+       cekecektir.
 
 ORNEKLER
     ./teknofem-ripper.pl
@@ -103,6 +97,10 @@ ARGUMANLER
 
     -v, --verbose
            Uygulama calisirken ayrintili ciktilari gosterir.
+
+    -q, --quiet
+           Uygulama calisirken hatalar ve uyarilar haricinde hic cikti
+           gostermez.
 
     -h, --help
            Uygulamanin kullanimi hakkinda genel bilgi.
