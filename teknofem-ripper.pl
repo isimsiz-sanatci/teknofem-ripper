@@ -136,6 +136,10 @@ all_videos.yaml dosyasi olusturur.
 
 Uygulama calisirken ayrintili ciktilari gosterir.
 
+=item B<-q, --quiet>
+
+Uygulama calisirken hatalar ve uyarilar haricinde hic cikti gostermez.
+
 =item B<-h, --help>
 
 Uygulamanin kullanimi hakkinda genel bilgi.
@@ -455,6 +459,7 @@ sub combine_videos {
 sub main {
   binmode STDOUT, ':utf8';
 
+  my $quiet = '';
   my $actions = {
     get_categories_and_links => '',
     download_all_videos      => '',
@@ -471,6 +476,7 @@ sub main {
     'rtmpdump=s'            => \$OPTIONS->{RTMPDUMP},
     'do-not-download'       => \$OPTIONS->{DO_NOT_DOWNLOAD},
     'retry=i'               => \$OPTIONS->{RETRY},
+    'quiet|q'               => \$quiet,
 
     # islemler
     'generate-layout|G'     => \$actions->{get_categories_and_links},
@@ -481,6 +487,7 @@ sub main {
 
   );
 
+  $OPTIONS->{DEBUG} = 0 if $quiet;
 
   # help
   if ($actions->{help}) {
