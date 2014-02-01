@@ -169,7 +169,7 @@ use YAML qw/LoadFile Dump/;
 our $VERSION = '0.01';
 my $OPTIONS = {
   PREFIX   => 'videolar',
-  DEBUG    => 0,
+  DEBUG    => 1,
   CWD      => getcwd (),
   RTMPDUMP => 'rtmpdump',
   RETRY    => 10,
