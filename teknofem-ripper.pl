@@ -311,7 +311,11 @@ sub find_rtmpdump {
   if ($^O eq 'MSWin32') {
     # varsayilan rtmpdump deneniyor
     system ($OPTIONS->{RTMPDUMP} . ' -h 2> NUL');
-    return unless $?;
+    unless ($?) {
+      $OPTIONS->{RTMPDUMP} = `where rtmpdump`;
+      chomp ($OPTIONS->{RTMPDUMP});
+      return;
+    }
 
     # cwd icerisindeki rtmpdump deneniyor
     system ($OPTIONS->{CWD} . '\rtmpdump -h 2> NUL');
