@@ -269,7 +269,12 @@ sub get_cat {
   my $parent = shift || '';
   my $dir = $OPTIONS->{PREFIX} . '/' . $parent . $cat->{slug};
 
-  debug ("Dizin olusturuluyor: $dir");
+  if (-e "$dir/videos.yaml") {
+    debug ("Kategori dizini: $dir zaten olusturulmus, atlaniyor.");
+    return;
+  }
+
+  debug ("Kategori dizini olusturuluyor: $dir");
   make_path ($dir);
 
   if (defined $cat->{data}) {
@@ -414,6 +419,7 @@ sub download_all_videos {
     return if $_ ne 'videos.yaml';
 
     my $videos = LoadFile ($_);
+    debug ($File::Find::dir . " kategorisindeki videolar indiriliyor");
     download_video (@{$_}) for (@{$videos});
   };
   find ($wanted, $path);
