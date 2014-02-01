@@ -316,8 +316,10 @@ sub find_rtmpdump {
     # varsayilan rtmpdump deneniyor
     system ($OPTIONS->{RTMPDUMP} . ' -h 2> NUL');
     unless ($?) {
-      $OPTIONS->{RTMPDUMP} = `where rtmpdump`;
-      chomp ($OPTIONS->{RTMPDUMP});
+      if ($OPTIONS->{RTMPDUMP} eq 'rtmpdump') {
+        $OPTIONS->{RTMPDUMP} = `where rtmpdump`;
+        chomp ($OPTIONS->{RTMPDUMP});
+      }
       return;
     }
 
