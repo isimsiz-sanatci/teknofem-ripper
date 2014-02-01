@@ -171,7 +171,7 @@ my $OPTIONS = {
   PREFIX   => 'videolar',
   DEBUG    => 0,
   CWD      => getcwd (),
-  RTMPDUMP => '',
+  RTMPDUMP => 'rtmpdump',
   RETRY    => 10,
   DO_NOT_DOWNLOAD => ''
 };
@@ -308,24 +308,44 @@ sub get_categories_and_links {
 
 sub find_rtmpdump {
 
-  return $OPTIONS->{RTMPDUMP} if $OPTIONS->{RTMPDUMP};
-
   if ($^O eq 'MSWin32') {
-    system ('rtmpdump -h 2> NUL');
-    if ($?) {
-      warn "rtmpdump bulunamadi. README icerisinde yer alan yonergeleri " .
-           "izleyin.\n";
-      system ("PAUSE");
-      exit 1;
-    }
+    # varsayilan rtmpdump deneniyor
+    system ($OPTIONS->{RTMPDUMP} . ' -h 2> NUL');
+    return unless $?;
 
+    # cwd icerisindeki rtmpdump deneniyor
+    system ($OPTIONS->{CWD} . '\rtmpdump -h 2> NUL');
+
+    unless ($?) {
+      $OPTIONS->{RTMPDUMP} = $OPTIONS->{CWD} . '\rtmpdump';
+    } else {
+      warn "rtmpdump bulunamadi, indiriliyor...\n";
+
+      eval 'use File::Temp qw(tempdir); use Archive::Zip; 1' or die;
+
+      my $tmpdir = tempdir ();
+
+      my $dua = LWP::UserAgent->new;
+      my $response = $dua->get (
+        'http://rtmpdump.mplayerhq.hu/download/'
+        . 'rtmpdump-2.4-git-010913-windows.zip',
+        ':content_file' => $tmpdir . '/rtmpdump-2.4-git-010913-windows.zip'
+      );
+
+      die unless $response->is_success;
+
+      my $zip = Archive::Zip->new;
+      die unless $zip->read ($tmpdir . '/rtmpdump-2.4-git-010913-windows.zip')
+        == 0; 
+      $zip->extractTree ('rtmpdump.exe', $OPTIONS->{CWD} . '/rtmpdump.exe');
+      $OPTIONS->{RTMPDUMP} = 'rtmpdump';
+    }
   } else {
-    system ('rtmpdump -h > /dev/null 2>&1');
-    die "rtmpdump bulunamadi. Paket yöneticiniz ile " .
+    system ($OPTIONS->{RTMPDUMP} . ' -h > /dev/null 2>&1');
+    die "rtmpdump bulunamadi. Paket yoneticiniz ile " .
         "rtmpdump paketini kurunuz\n" if $?;
   }
 
-  return 'rtmpdump';
 }
 
 
@@ -345,7 +365,7 @@ sub download_video {
   debug ("$filename indiriliyor");
 
   my @args = (
-    find_rtmpdump (),
+    $OPTIONS->{RTMPDUMP},
     '-v',
     '-r' => $link,
     '-y' => make_playpath ($link),
@@ -473,13 +493,16 @@ sub main {
       !$actions->{help} &&
       !$actions->{combine_videos})
   {
+    find_rtmpdump ();
     get_categories_and_links ();
     download_all_videos ();
   } elsif ($actions->{get_categories_and_links}) {
     get_categories_and_links ();
   } elsif ($actions->{download_all_videos}) {
+    find_rtmpdump ();
     download_all_videos ();
   } elsif ($actions->{download_video}) {
+    find_rtmpdump ();
     download_all_videos ($actions->{download_video});
   } elsif ($actions->{combine_videos}) {
     combine_videos ();
